@@ -1,7 +1,7 @@
 {
   "name": "Vendetta",
   "version_number": "0.2.0",
-  "website_url": "",
+  "website_url": "https://github.com/alexski/stonewards-vendetta",
   "description": "Each wave, one monster swears a vendetta against a dwarf and grows stronger with every hit. Survivors return as Nemeses. Fully configurable in game.",
   "dependencies": [
     "BepInEx-BepInExPack-5.4.2305"

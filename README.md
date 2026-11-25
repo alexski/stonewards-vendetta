@@ -35,7 +35,7 @@ The settings work with **Stonewards ModSettings** (on Thunderstore) and **BepInE
 - [x] Marker, messages and countdowns on other players' screens (`src/Net/LobbySync.cs`; they need the mod too)
 - [ ] Tested with a friend
 - [x] `PluginGuid` in `Plugin.cs` set to `baranmods.stonewards.vendetta` (don't change it: that resets everyone's settings)
-- [ ] `website_url` in `thunderstore/manifest.json` set (a GitHub repo is typical)
+- [x] `website_url` in `thunderstore/manifest.json` set
 - [ ] Version matches in three places: `ModVersion` (csproj), `version_number` (manifest), `PluginVersion` (Plugin.cs). Add a CHANGELOG entry.
 - [ ] Choose the **AI Generated** category when uploading. Thunderstore asks mods with significant AI-written code to disclose it.
 - [ ] The upload is `bin\Vendetta-<version>.zip`
