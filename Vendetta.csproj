@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Vendetta</AssemblyName>
+    <RootNamespace>Vendetta</RootNamespace>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+
+    <!-- Your Stonewards install folder. -->
+    <GameDir>D:\SteamLibrary\steamapps\common\Stonewards</GameDir>
+    <ManagedDir>$(GameDir)\Stonewards_Data\Managed</ManagedDir>
+
+    <!-- Your Thunderstore Mod Manager profile. Use Settings > Locations > Browse profile folder to check the path, and change "Default" if your profile has another name. -->
+    <ProfileDir>$(APPDATA)\Thunderstore Mod Manager\DataFolder\Stonewards\profiles\Default</ProfileDir>
+
+    <!-- Keep this, thunderstore/manifest.json and PluginVersion in Plugin.cs the same. -->
+    <ModVersion>0.2.0</ModVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameDir)\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(ManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(ManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Only Net/LobbySync.cs uses this. -->
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>$(ManagedDir)\com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameDir)\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Vendetta reaches the game's classes by name (Game/GameNames.cs), so Assembly-CSharp isn't referenced.
+         That keeps the mod loading even after game updates rename things. -->
+  </ItemGroup>
+
+  <!-- 1. Copy to the game folder (for launching the game directly from Steam). -->
+  <Target Name="CopyToPlugins" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)\BepInEx\plugins\Vendetta" />
+  </Target>
+
+  <!-- 2. Copy to your Thunderstore profile (for launching through the mod manager). Skipped if the folder doesn't exist. -->
+  <Target Name="CopyToProfile" AfterTargets="Build" Condition="Exists('$(ProfileDir)')">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProfileDir)\BepInEx\plugins\Vendetta" />
+    <Message Importance="high" Text="Vendetta copied to Thunderstore profile: $(ProfileDir)" />
+  </Target>
+
+  <!-- 3. Release builds only: create the Thunderstore zip for friends at bin\Vendetta-<version>.zip -->
+  <Target Name="PackThunderstore" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <PropertyGroup>
+      <StageDir>$(BaseIntermediateOutputPath)thunderstore-stage</StageDir>
+      <PackageZip>$(MSBuildProjectDirectory)\bin\Vendetta-$(ModVersion).zip</PackageZip>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageFiles Include="$(MSBuildProjectDirectory)\thunderstore\*" />
+    </ItemGroup>
+    <RemoveDir Directories="$(StageDir)" />
+    <Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(StageDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(StageDir)" />
+    <ZipDirectory SourceDirectory="$(StageDir)" DestinationFile="$(PackageZip)" Overwrite="true" />
+    <Message Importance="high" Text="Thunderstore package: $(PackageZip)" />
+  </Target>
+
+</Project>

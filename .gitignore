@@ -1,0 +1,13 @@
+# Build output
+bin/
+obj/
+*.user
+.vs/
+.vscode/
+
+# Local tool settings
+.claude/
+
+# Never commit game or library files
+*.dll
+*.pdb
