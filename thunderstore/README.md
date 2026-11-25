@@ -2,7 +2,7 @@
 
 Each wave, one monster swears a vendetta against a dwarf. It hunts that player, jumps onto the walls to reach them, and grows stronger with every hit. On Greed waves it goes after the top miner. Shelter in the courtyard and it soon leaps over the wall. Hide in the mines and it waits at the entrance, getting stronger. If it downs its target, one of its wave returns in a later run as a Nemesis.
 
-> **Status: v0.2.0 (in development).** Tested in solo runs. Co-op is still being tested.
+> **Status: v0.2.1 (in development).** Tested in solo runs. Co-op is still being tested.
 
 ## Settings
 Change them in game with **ModSettings** (on Thunderstore) or **BepInEx Configuration Manager** (F1), or edit `BepInEx/config/` directly. Choose **Casual / Standard / Brutal**, or adjust any value yourself:
@@ -12,3 +12,6 @@ In multiplayer, only the host needs the mod for the vendetta to happen, and the 
 
 ## Install
 Thunderstore Mod Manager: **Settings → Profile → Import local mod**, then choose this zip. The host needs the mod; other players need it to see the marker, messages and countdowns.
+
+## AI disclosure
+Much of this mod's code and documentation was generated with **Claude** (Anthropic), through Claude Code. The design and the in-game testing are by BaranMods.

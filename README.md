@@ -1,4 +1,4 @@
-# Vendetta (Stonewards mod) v0.2.0
+# Vendetta (Stonewards mod) v0.2.1
 
 Each wave, one monster swears a vendetta against one dwarf. It hunts that player over the wall and to the mine entrance, grows stronger with every hit, and if its dwarf stays dead the run is lost. For players, see `thunderstore/README.md`; the rest of this page is for building it.
 
@@ -37,7 +37,8 @@ The settings work with **Stonewards ModSettings** (on Thunderstore) and **BepInE
 - [x] `PluginGuid` in `Plugin.cs` set to `baranmods.stonewards.vendetta` (don't change it: that resets everyone's settings)
 - [x] `website_url` in `thunderstore/manifest.json` set
 - [ ] Version matches in three places: `ModVersion` (csproj), `version_number` (manifest), `PluginVersion` (Plugin.cs). Add a CHANGELOG entry.
-- [ ] Choose the **AI Generated** category when uploading. Thunderstore asks mods with significant AI-written code to disclose it.
+- [x] AI use disclosed in `thunderstore/README.md` and as `AssemblyMetadata` in the csproj (Thunderstore requires both). Stonewards has no **AI Generated** category (checked Nov 2026); choose it if one is added.
+- [ ] Category: **Mods**
 - [ ] The upload is `bin\Vendetta-<version>.zip`
 
 ## Changing a version

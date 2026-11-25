@@ -15,7 +15,7 @@ namespace Vendetta
         // Thunderstore team BaranMods. Don't change it: it names everyone's settings and Nemesis files.
         public const string PluginGuid = "baranmods.stonewards.vendetta";
         public const string PluginName = "Vendetta";
-        public const string PluginVersion = "0.2.0";
+        public const string PluginVersion = "0.2.1";
 
         public static Plugin Instance { get; private set; }
         public static BepInEx.Logging.ManualLogSource Log { get { return Instance.Logger; } }

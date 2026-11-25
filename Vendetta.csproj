@@ -14,8 +14,14 @@
     <ProfileDir>$(APPDATA)\Thunderstore Mod Manager\DataFolder\Stonewards\profiles\Default</ProfileDir>
 
     <!-- Keep this, thunderstore/manifest.json and PluginVersion in Plugin.cs the same. -->
-    <ModVersion>0.2.0</ModVersion>
+    <ModVersion>0.2.1</ModVersion>
   </PropertyGroup>
+
+  <!-- Thunderstore asks for this: wiki.thunderstore.io/llms-and-ai-generated-files -->
+  <ItemGroup>
+    <AssemblyMetadata Include="AI_Assisted_Creation" Value="This assembly was partially or fully created with the assistance of Generative AI (code and documentation)." />
+    <AssemblyMetadata Include="AI_Model_Vendor" Value="Anthropic (Claude, through Claude Code)" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="BepInEx">

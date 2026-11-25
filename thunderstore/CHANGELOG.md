@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+- AI use disclosed on the package page and in the mod file
+- No gameplay changes
+
 ## 0.2.0
 - Vendetta director: one monster per wave hunts a dwarf, with stacking damage, slower heavier hits, healing when ignored
 - Leaps onto the wall with a telegraph and follows its target along it and back down; the courtyard is safe for a short while, less every wave; goes for the King while its target is dead; waits at the mine entrance and grows while its target hides underground
